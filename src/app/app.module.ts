@@ -9,6 +9,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -22,7 +24,20 @@ import { SidenavComponent } from './sidenav/sidenav.component';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule.forRoot(
+            [
+                {
+                    path: "sign-up",
+                    component: SignupFormComponent
+                },
+                {
+                    path: "course-component",
+                    component: CoursesComponent
+                }
+            ]
+        )
     ],
     providers: [],
     bootstrap: [AppComponent]

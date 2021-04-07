@@ -3,9 +3,9 @@
         <label for="userName">User Name</label>
         <input formControlName="username" id="userName" type="text" class="form-control">
         <div *ngIf="username && username.touched && username.invalid" class="alert alert-danger">
-            <div *ngIf="username.errors&&username.errors.required">Username is required</div>
-            <div *ngIf="username.errors&&username.errors.minlength">Username should be minimum {{username.errors.minlength.requiredLength}} charecters</div>
-            <div *ngIf="username.errors&&username.errors.cannotContainSpace">Can not Contain Space</div>
+            <div *ngIf="username.errors && username.errors.required">Username is required</div>
+            <div *ngIf="username.errors && username.errors.minlength">Username should be minimum {{username.errors.minlength.requiredLength}} charecters</div>
+            <div *ngIf="username.errors && username.errors.cannotContainSpace">Can not Contain Space</div>
 
         </div>
     </div>
