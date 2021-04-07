@@ -5,10 +5,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
     selector: 'app-signup-form',
-    templateUrl: './signup-form.component.html',
-    styleUrls: ['./signup-form.component.css']
+    templateUrl: './add-employee.component.html',
+    styleUrls: ['./add-employee.component.css']
 })
-export class SignupFormComponent {
+export class AddEmployeeComponent {
     controls = {
         username: new FormControl('', [
             Validators.required, //validators.required = static fn

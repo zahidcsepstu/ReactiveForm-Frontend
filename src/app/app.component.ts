@@ -1,5 +1,6 @@
-import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+
 
 import { Component } from '@angular/core';
 
@@ -18,7 +19,7 @@ export class AppComponent {
     }
 
     openDialog() {
-        const dialogRef = this.dialog.open(DialogComponent);
+        const dialogRef = this.dialog.open(UpdateEmployeeComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);

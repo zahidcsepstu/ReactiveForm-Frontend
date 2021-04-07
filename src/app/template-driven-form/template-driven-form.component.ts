@@ -3,10 +3,10 @@ import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'contact-form',
-    templateUrl: './contact-form.component.html',
-    styleUrls: ['./contact-form.component.css']
+    templateUrl: './template-driven-form.component.html',
+    styleUrls: ['./template-driven-form.component.css']
 })
-export class ContactFormComponent {
+export class TemplateDrivenFormComponent {
 
     contactMethods = [
         {

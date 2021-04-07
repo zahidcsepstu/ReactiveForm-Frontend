@@ -1,13 +1,14 @@
-import { DialogComponent } from './../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateEmployeeComponent } from './../update-employee/update-employee.component';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-sidenav',
-    templateUrl: './sidenav.component.html',
-    styleUrls: ['./sidenav.component.css']
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css']
 })
-export class SidenavComponent implements OnInit {
+export class NavbarComponent implements OnInit {
 
     constructor(private dialog: MatDialog) { }
 
@@ -15,7 +16,7 @@ export class SidenavComponent implements OnInit {
     }
 
     openDialog() {
-        const dialogRef = this.dialog.open(DialogComponent);
+        const dialogRef = this.dialog.open(UpdateEmployeeComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);

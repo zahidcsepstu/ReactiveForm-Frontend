@@ -1,32 +1,33 @@
-import { DialogComponent } from './dialog/dialog.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
 import { AppRoutingModule } from './app-routing.module';
-import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        ContactFormComponent,
-        SidenavComponent,
-        SignupFormComponent,
-        DialogComponent
+        TemplateDrivenFormComponent,
+        NavbarComponent,
+        AddEmployeeComponent,
+        UpdateEmployeeComponent
     ],
-    entryComponents: [DialogComponent],
+    entryComponents: [UpdateEmployeeComponent],
     exports: [
 
     ],
@@ -42,11 +43,11 @@ import { MatButtonModule } from '@angular/material/button';
             [
                 {
                     path: "sign-up",
-                    component: SignupFormComponent
+                    component: AddEmployeeComponent
                 },
                 {
                     path: "course-component",
-                    component: ContactFormComponent
+                    component: UpdateEmployeeComponent
                 }
             ]
         ),
