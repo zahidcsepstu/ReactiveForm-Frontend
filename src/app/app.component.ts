@@ -1,4 +1,4 @@
-import { DialogComponent } from './../dialog/dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Component } from '@angular/core';

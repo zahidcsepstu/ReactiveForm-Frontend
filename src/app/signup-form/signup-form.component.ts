@@ -1,7 +1,7 @@
+import { usernamevalidators } from './../common/validators/username.validators';
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms'
-import { usernamevalidators } from '../app/common/validators/username.validators';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
     selector: 'app-signup-form',
@@ -11,10 +11,11 @@ import { usernamevalidators } from '../app/common/validators/username.validators
 export class SignupFormComponent {
     controls = {
         username: new FormControl('', [
-            Validators.required,
+            Validators.required, //validators.required = static fn
             Validators.minLength(3),
             usernamevalidators.cannotContainSpace
-        ]),  // user name is type abstractControl validators.required = static fn
+        ]),
+        // user name is type abstractControl
         password: new FormControl()
     }
     form = new FormGroup(this.controls)
