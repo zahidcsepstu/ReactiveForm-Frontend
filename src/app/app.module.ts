@@ -11,14 +11,27 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { MatButtonModule } from '@angular/material/button';
+import { DialogComponent } from './dialog/dialog.component';
+
+
 
 @NgModule({
     declarations: [
         AppComponent,
         CoursesComponent,
         ContactFormComponent,
+        SidenavComponent,
         SignupFormComponent,
-        SidenavComponent
+        DialogComponent
+    ],
+    entryComponents: [DialogComponent],
+    exports: [
+
     ],
     imports: [
         BrowserModule,
@@ -26,6 +39,8 @@ import { RouterModule } from '@angular/router';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        MatButtonModule,
+        MatDialogModule,
         RouterModule.forRoot(
             [
                 {
@@ -37,7 +52,8 @@ import { RouterModule } from '@angular/router';
                     component: CoursesComponent
                 }
             ]
-        )
+        ),
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
