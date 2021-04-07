@@ -3,12 +3,10 @@
 
     <div class="form-group">
         <label for="firstName">First Name</label>
-        <input required minlength="3" maxlength="10" pattern="banana" ngModel name="firstName" id="firstName"
-            #firstName="ngModel" (change)="log(firstName)" type="text" class="form-control">
+        <input required minlength="3" maxlength="10" pattern="banana" ngModel name="firstName" id="firstName" #firstName="ngModel" (change)="log(firstName)" type="text" class="form-control">
         <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
             <div *ngIf="firstName.errors && firstName.errors.required">First Name is Required</div>
-            <div *ngIf="firstName.errors && firstName.errors.minlength">First name should be minimum
-                {{firstName.errors.minlength.requiredLength}} charecters </div>
+            <div *ngIf="firstName.errors && firstName.errors.minlength">First name should be minimum{{firstName.errors.minlength.requiredLength}} charecters</div>
             <div *ngIf="firstName.errors && firstName.errors.pattern">Patterns doesnot match </div>
         </div>
     </div>
@@ -21,8 +19,7 @@
     <div ngModelGroup="contact" #contact="ngModelGroup">
         <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="number" required ngModel name="phoneNumber" id="phoneNumber" #phoneNumber="ngModel"
-                class="form-control">
+            <input type="number" required ngModel name="phoneNumber" id="phoneNumber" #phoneNumber="ngModel" class="form-control">
         </div>
     </div>
 

@@ -7,12 +7,16 @@ import { AppComponent } from './app/app.component';
 import { CoursesComponent } from './courses/courses.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CoursesComponent,
-        ContactFormComponent
+        ContactFormComponent,
+        SignupFormComponent,
+        SidenavComponent
     ],
     imports: [
         BrowserModule,
