@@ -10,17 +10,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class AddEmployeeComponent {
     controls = {
-        username: new FormControl('', [
+        name: new FormControl(),
+        jobTitle: new FormControl(),
+        email: new FormControl('', [
             Validators.required, //validators.required = static fn
             Validators.minLength(3),
             usernamevalidators.cannotContainSpace
         ]),
         // user name is type abstractControl
-        password: new FormControl()
+        imageUrl: new FormControl()
     }
     form = new FormGroup(this.controls)
 
     get username() {
         return this.form.get('username')
+    };
+    get email() {
+        return this.form.get('email')
     }
 }

@@ -1,7 +1,3 @@
-import { MatDialog } from '@angular/material/dialog';
-import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
-
-
 import { Component } from '@angular/core';
 
 
@@ -13,16 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title = 'test';
 
-    constructor(private dialog: MatDialog) { }
+    constructor() { }
 
-    ngOnInit(): void {
-    }
-
-    openDialog() {
-        const dialogRef = this.dialog.open(UpdateEmployeeComponent);
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
-        });
-    }
 }

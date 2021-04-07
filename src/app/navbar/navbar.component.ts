@@ -1,6 +1,3 @@
-import { MatDialog } from '@angular/material/dialog';
-import { UpdateEmployeeComponent } from './../update-employee/update-employee.component';
-
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,18 +5,8 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-    constructor(private dialog: MatDialog) { }
+    constructor() { }
 
-    ngOnInit(): void {
-    }
-
-    openDialog() {
-        const dialogRef = this.dialog.open(UpdateEmployeeComponent);
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
-        });
-    }
 }

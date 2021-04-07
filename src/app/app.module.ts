@@ -1,3 +1,4 @@
+import { EmployeeService } from './employee.service';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EmployeesComponent } from './employees/employees.component';
 
 
 
@@ -25,7 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         TemplateDrivenFormComponent,
         NavbarComponent,
         AddEmployeeComponent,
-        UpdateEmployeeComponent
+        UpdateEmployeeComponent,
+        EmployeesComponent
     ],
     entryComponents: [UpdateEmployeeComponent],
     exports: [
@@ -42,18 +45,18 @@ import { MatDialogModule } from '@angular/material/dialog';
         RouterModule.forRoot(
             [
                 {
-                    path: "sign-up",
-                    component: AddEmployeeComponent
+                    path: "employees",
+                    component: EmployeesComponent
                 },
                 {
-                    path: "course-component",
-                    component: UpdateEmployeeComponent
+                    path: "addEmployee",
+                    component: AddEmployeeComponent
                 }
             ]
         ),
         BrowserAnimationsModule
     ],
-    providers: [],
+    providers: [EmployeeService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
