@@ -25,24 +25,57 @@ export class UpdateEmployeeComponent implements OnInit {
     }
 
     controls = {
-        name: new FormControl(),
-        jobTitle: new FormControl(),
-        email: new FormControl('', [
-            Validators.required, //validators.required = static fn
-            Validators.minLength(3),
-            usernamevalidators.cannotContainSpace
-        ]),
-        phone: new FormControl(),
-        // user name is type abstractControl
-        imageUrl: new FormControl()
+        name: new FormControl('',
+            [
+                Validators.minLength(3),
+                Validators.required, //validators.required = static fn
+            ]
+        ),
+        jobTitle: new FormControl('',
+            [
+                Validators.required,
+            ]
+        ),
+        email: new FormControl('',
+            [
+                Validators.required,
+                usernamevalidators.cannotContainSpace,
+                usernamevalidators.shouldContainAt
+            ]
+        ),
+        phone: new FormControl('',
+            [
+                Validators.required,
+                Validators.maxLength(11),
+                Validators.minLength(11),
+                usernamevalidators.cannotContainSpace
+            ]
+        ),
+
+        imageUrl: new FormControl('',
+            [
+                Validators.required,
+                usernamevalidators.cannotContainSpace
+            ]
+        )
     }
     form = new FormGroup(this.controls)
 
-    get username() {
-        return this.form.get('username')
+
+    get name() {
+        return this.form.get('name')
+    };
+    get jobTitle() {
+        return this.form.get('jobTitle')
     };
     get email() {
         return this.form.get('email')
+    }
+    get phone() {
+        return this.form.get('phone')
+    }
+    get imageUrl() {
+        return this.form.get('imageUrl')
     }
 
 }

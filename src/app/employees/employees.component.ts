@@ -29,7 +29,10 @@ export class EmployeesComponent implements OnInit {
         const dialogRef = this.dialog.open(UpdateEmployeeComponent, { data: { employee: employee } });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
+            if (result) {
+
+                this.onUpdateEmloyee(result)
+            }
         });
     }
 

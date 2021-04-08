@@ -4,11 +4,19 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input formControlName="name" [(ngModel)]="employee.name" id="name" type="text" class="form-control">
+            <div *ngIf="name && name.touched && name.invalid" class="alert alert-danger">
+                <div *ngIf="name.errors && name.errors.required">name is required</div>
+                <div *ngIf="name.errors && name.errors.minlength">name should be minimum {{name.errors.minlength.requiredLength}} charecters</div>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="jobTitle">Job Title</label>
             <input formControlName="jobTitle" [(ngModel)]="employee.jobTitle" id="jobTitle" type="text" class="form-control">
+            <div *ngIf="jobTitle && jobTitle.touched && jobTitle.invalid" class="alert alert-danger">
+                <div *ngIf="jobTitle.errors && jobTitle.errors.required">jobTitle is required</div>
+
+            </div>
         </div>
 
         <div class="form-group">
@@ -16,25 +24,37 @@
             <input formControlName="email" id="email" [(ngModel)]="employee.email" type="text" class="form-control">
             <div *ngIf="email && email.touched && email.invalid" class="alert alert-danger">
                 <div *ngIf="email.errors && email.errors.required">email is required</div>
-                <div *ngIf="email.errors && email.errors.minlength">email should be minimum {{email.errors.minlength.requiredLength}} charecters</div>
                 <div *ngIf="email.errors && email.errors.cannotContainSpace">Can not Contain Space</div>
+                <div *ngIf="email.errors && email.errors.shouldContainAt">should contain @</div>
 
             </div>
         </div>
 
         <div class="form-group">
             <label for="phone">Phone</label>
-            <input formControlName="phone" id="jobTitle" type="number" [(ngModel)]="employee.phone" class="form-control">
+            <input formControlName="phone" id="jobTitle" type="text" [(ngModel)]="employee.phone" class="form-control">
+            <div *ngIf="phone && phone.touched && phone.invalid" class="alert alert-danger">
+                <div *ngIf="phone.errors && phone.errors.required">phone is required</div>
+                <div *ngIf="phone.errors && phone.errors.minlength">phone should be minimum {{phone.errors.minlength.requiredLength}} charecters</div>
+                <div *ngIf="phone.errors && phone.errors.maxlength">phone should be maximum {{phone.errors.maxlength.requiredLength}} charecters</div>
+                <div *ngIf="phone.errors && phone.errors.cannotContainSpace">Can not Contain Space</div>
+
+            </div>
         </div>
 
         <div class="form-group">
             <label for="imageUrl">Image URL</label>
             <input formControlName="imageUrl" id="imageUrl" type="text" [(ngModel)]="employee.imageUrl" class="form-control">
+            <div *ngIf="imageUrl && imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
+                <div *ngIf="imageUrl.errors && imageUrl.errors.required">imageUrl is required</div>
+                <div *ngIf="imageUrl.errors && imageUrl.errors.cannotContainSpace">Can not Contain Space</div>
+
+            </div>
         </div>
 
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial type="submit">Update</button>
+    <button mat-button [mat-dialog-close]="employee" [disabled]="!form.valid" cdkFocusInitial type="submit">Update</button>
 </mat-dialog-actions>

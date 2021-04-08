@@ -8,4 +8,12 @@ export class usernamevalidators {
 
         return null
     }
+
+    static shouldContainAt(control: AbstractControl): ValidationErrors | null {
+        if (control.value && (control.value as string).indexOf('@') == -1) {
+            return { shouldContainAt: true }
+        }
+
+        return null
+    }
 }
