@@ -1,4 +1,4 @@
-import { usernamevalidators } from './../common/validators/username.validators';
+import { CustomValidators } from '../common/validators/custom.validators';
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms'
@@ -30,8 +30,8 @@ export class AddEmployeeComponent {
         email: new FormControl('',
             [
                 Validators.required,
-                usernamevalidators.cannotContainSpace,
-                usernamevalidators.shouldContainAt
+                CustomValidators.cannotContainSpace,
+                CustomValidators.shouldContainAt
             ]
         ),
         phone: new FormControl('',
@@ -39,14 +39,14 @@ export class AddEmployeeComponent {
                 Validators.required,
                 Validators.maxLength(11),
                 Validators.minLength(11),
-                usernamevalidators.cannotContainSpace
+                CustomValidators.cannotContainSpace
             ]
         ),
 
         imageUrl: new FormControl('',
             [
                 Validators.required,
-                usernamevalidators.cannotContainSpace
+                CustomValidators.cannotContainSpace
             ]
         )
     }

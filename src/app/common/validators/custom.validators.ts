@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
 
-export class usernamevalidators {
+export class CustomValidators {
     static cannotContainSpace(control: AbstractControl): ValidationErrors | null {
         if (control.value && (control.value as string).indexOf(' ') >= 0) {
             return { cannotContainSpace: true }

@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { usernamevalidators } from '../common/validators/username.validators';
+import { CustomValidators } from '../common/validators/custom.validators';
 
 @Component({
     selector: 'app-dialog',
@@ -39,8 +39,8 @@ export class UpdateEmployeeComponent implements OnInit {
         email: new FormControl('',
             [
                 Validators.required,
-                usernamevalidators.cannotContainSpace,
-                usernamevalidators.shouldContainAt
+                CustomValidators.cannotContainSpace,
+                CustomValidators.shouldContainAt
             ]
         ),
         phone: new FormControl('',
@@ -48,14 +48,14 @@ export class UpdateEmployeeComponent implements OnInit {
                 Validators.required,
                 Validators.maxLength(11),
                 Validators.minLength(11),
-                usernamevalidators.cannotContainSpace
+                CustomValidators.cannotContainSpace
             ]
         ),
 
         imageUrl: new FormControl('',
             [
                 Validators.required,
-                usernamevalidators.cannotContainSpace
+                CustomValidators.cannotContainSpace
             ]
         )
     }
