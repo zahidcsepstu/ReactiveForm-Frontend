@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Employee } from './../employee';
+import { Component, Inject, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { usernamevalidators } from '../common/validators/username.validators';
 
 @Component({
@@ -10,9 +12,16 @@ import { usernamevalidators } from '../common/validators/username.validators';
 })
 export class UpdateEmployeeComponent implements OnInit {
 
-    constructor() { }
+
+    constructor(public dialogRef: MatDialogRef<UpdateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+    public employee: any;
+
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 
     ngOnInit(): void {
+        this.employee = { ...this.data['employee'] };
     }
 
     controls = {
@@ -23,6 +32,7 @@ export class UpdateEmployeeComponent implements OnInit {
             Validators.minLength(3),
             usernamevalidators.cannotContainSpace
         ]),
+        phone: new FormControl(),
         // user name is type abstractControl
         imageUrl: new FormControl()
     }
