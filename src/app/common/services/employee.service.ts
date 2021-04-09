@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Employee } from './employee';
+import { Employee } from '../../employee';
 import { environment } from 'src/environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class EmployeeService {
     private apiServerUrl = environment.apiBaseUrl;
 
@@ -25,4 +25,9 @@ export class EmployeeService {
     public deleteEmployee(employeeId: number): Observable<void> {
         return this.http.delete<void>(`${this.apiServerUrl}/employee/delete/${employeeId}`);
     }
+
+    public getEmployeeEmail(id: number): Observable<String[]> {
+        return this.http.get<String[]>(`${this.apiServerUrl}/employee/allEmployeeEmail/${id}`);
+    }
+
 }

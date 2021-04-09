@@ -2,8 +2,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
-import { EmployeeService } from '../employee.service';
+import { EmployeeService } from '../common/services/employee.service';
 import { UpdateEmployeeComponent } from '../update-employee/update-employee.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-employees',
@@ -73,5 +74,12 @@ export class EmployeesComponent implements OnInit {
             }
         );
     }
+
+    clickMethod(name: string, id: number) {
+        if (confirm("Are you sure to delete " + name)) {
+            this.onDeleteEmloyee(id)
+        }
+    }
+
 
 }

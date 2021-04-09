@@ -1,10 +1,11 @@
-import { CustomValidators } from '../common/validators/custom.validators';
+import { ToastrService } from 'ngx-toastr';
+import { CustomValidators, shouldBeUnique } from '../common/validators/custom.validators';
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { HttpErrorResponse } from '@angular/common/http';
 import { Employee } from '../employee';
-import { EmployeeService } from '../employee.service';
+import { EmployeeService } from '../common/services/employee.service';
 
 @Component({
     selector: 'app-signup-form',
@@ -12,9 +13,9 @@ import { EmployeeService } from '../employee.service';
     styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent {
-    constructor(private employeeService: EmployeeService) {
 
-    }
+    constructor(private employeeService: EmployeeService, private toastr: ToastrService) { }
+
     controls = {
         name: new FormControl('',
             [
@@ -32,7 +33,8 @@ export class AddEmployeeComponent {
                 Validators.required,
                 CustomValidators.cannotContainSpace,
                 CustomValidators.shouldContainAt
-            ]
+            ],
+            shouldBeUnique(this.employeeService, -1)
         ),
         phone: new FormControl('',
             [
@@ -82,12 +84,14 @@ export class AddEmployeeComponent {
             }
         });
     }
-
+    showSuccess() {
+        this.toastr.success('Employee Added', 'Success');
+    }
     submit(form: FormGroup) {
         if (this.form.valid) {
             this.employeeService.addEmployee(form.value).subscribe(
                 (response: Employee) => {
-                    console.log(response);
+                    this.showSuccess();
                     form.reset();
                 },
                 (error: HttpErrorResponse) => {

@@ -20,10 +20,12 @@
     <div class="form-group">
         <label for="email" class="required">Email</label>
         <input formControlName="email" id="email" type="email" class="form-control">
+        <div *ngIf="email && email.pending">Checking for availability...</div>
         <div *ngIf="email && email.touched && email.invalid" class="alert alert-danger">
             <div *ngIf="email.errors && email.errors.required">email is required</div>
             <div *ngIf="email.errors && email.errors.cannotContainSpace">Can not Contain Space</div>
             <div *ngIf="email.errors && email.errors.shouldContainAt">should contain @</div>
+            <div *ngIf="email.errors && email.errors.shouldBeUnique">should be Unique</div>
 
         </div>
     </div>

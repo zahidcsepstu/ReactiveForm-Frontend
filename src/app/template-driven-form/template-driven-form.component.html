@@ -1,6 +1,4 @@
 <form #f="ngForm" (ngSubmit)="submit(f)">
-
-
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input required minlength="3" maxlength="10" pattern="banana" ngModel name="firstName" id="firstName" #firstName="ngModel" (change)="log(firstName)" type="text" class="form-control">

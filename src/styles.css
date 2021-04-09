@@ -8,6 +8,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+/* @import '~ngx-toastr/toastr';
+@import '~ngx-toastr/toastr-bs4-alert';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';*/
+
 .form-control.ng-touched.ng-invalid {
     border: 1px solid red;
 }

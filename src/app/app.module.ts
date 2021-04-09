@@ -1,4 +1,4 @@
-import { EmployeeService } from './employee.service';
+import { EmployeeService } from './common/services/employee.service';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EmployeesComponent } from './employees/employees.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -42,6 +43,9 @@ import { EmployeesComponent } from './employees/employees.component';
         HttpClientModule,
         MatButtonModule,
         MatDialogModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-top-center',
+        }),
         RouterModule.forRoot(
             [
                 {

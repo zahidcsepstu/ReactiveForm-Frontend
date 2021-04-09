@@ -1,5 +1,8 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+      "analytics": "8532495a-dda1-4109-ba73-978a8947cde7"
+    },
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
@@ -29,18 +32,17 @@
                         ],
                         "styles": [
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                            "src/styles.css"
+                            "src/styles.css",
+                            "node_modules/ngx-toastr/toastr.css"
                         ],
                         "scripts": []
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.prod.ts"
-                                }
-                            ],
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.prod.ts"
+                            }],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
@@ -48,8 +50,7 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "budgets": [
-                                {
+                            "budgets": [{
                                     "type": "initial",
                                     "maximumWarning": "500kb",
                                     "maximumError": "1mb"
