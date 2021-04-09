@@ -2,7 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CustomValidators, shouldBeUnique } from '../common/validators/custom.validators';
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Employee } from '../employee';
 import { EmployeeService } from '../common/services/employee.service';
@@ -20,7 +20,7 @@ export class AddEmployeeComponent {
         name: new FormControl('',
             [
                 Validators.minLength(3),
-                Validators.required, //validators.required = static fn
+                Validators.required, // validators.required = static fn
             ]
         ),
         jobTitle: new FormControl('',
@@ -51,27 +51,27 @@ export class AddEmployeeComponent {
                 CustomValidators.cannotContainSpace
             ]
         )
-    }
-    form = new FormGroup(this.controls)
+    };
+    form = new FormGroup(this.controls);
 
     get name() {
-        return this.form.get('name')
-    };
+        return this.form.get('name');
+    }
     get jobTitle() {
-        return this.form.get('jobTitle')
-    };
+        return this.form.get('jobTitle');
+    }
     get email() {
-        return this.form.get('email')
+        return this.form.get('email');
     }
     get phone() {
-        return this.form.get('phone')
+        return this.form.get('phone');
     }
     get imageUrl() {
-        return this.form.get('imageUrl')
+        return this.form.get('imageUrl');
     }
 
     get f() {
-        return this.form
+        return this.form;
     }
 
     validateAllFormFields(formGroup: FormGroup) {

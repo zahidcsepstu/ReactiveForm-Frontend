@@ -13,9 +13,6 @@
         "array-type": false,
         "arrow-return-shorthand": true,
         "curly": true,
-        "deprecation": {
-            "severity": "warning"
-        },
         "eofline": true,
         "import-blacklist": [
             true,
@@ -82,13 +79,8 @@
                 "named": "never"
             }
         },
-        "typedef": [
-            true,
-            "call-signature"
-        ],
         "typedef-whitespace": {
-            "options": [
-                {
+            "options": [{
                     "call-signature": "nospace",
                     "index-signature": "nospace",
                     "parameter": "nospace",
