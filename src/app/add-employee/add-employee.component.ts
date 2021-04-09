@@ -72,17 +72,33 @@ export class AddEmployeeComponent {
         return this.form
     }
 
-    submit(form: FormGroup) {
-
-        this.employeeService.addEmployee(form.value).subscribe(
-            (response: Employee) => {
-                console.log(response);
-                form.reset();
-            },
-            (error: HttpErrorResponse) => {
-                alert(error.message);
-                form.reset();
+    validateAllFormFields(formGroup: FormGroup) {
+        Object.keys(formGroup.controls).forEach(field => {
+            const control = formGroup.get(field);
+            if (control instanceof FormControl) {
+                control.markAsTouched({ onlySelf: true });
+            } else if (control instanceof FormGroup) {
+                this.validateAllFormFields(control);
             }
-        );
+        });
+    }
+
+    submit(form: FormGroup) {
+        if (this.form.valid) {
+            this.employeeService.addEmployee(form.value).subscribe(
+                (response: Employee) => {
+                    console.log(response);
+                    form.reset();
+                },
+                (error: HttpErrorResponse) => {
+                    alert(error.message);
+                    form.reset();
+                }
+            );
+        } else {
+            this.validateAllFormFields(this.form);
+        }
+
+
     }
 }
