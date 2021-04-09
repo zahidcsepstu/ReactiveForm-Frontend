@@ -12,27 +12,21 @@ import { ToastrService } from 'ngx-toastr';
     styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+    public employees!: Employee[];
 
-    title(title: any) {
-        throw new Error('Method not implemented.');
-    }
-    public employees: Employee[] = [];
-    public editEmployee!: Employee;
-    public deleteEmployee!: Employee;
 
-    constructor(private employeeService: EmployeeService, private dialog: MatDialog) { }
+    constructor(private employeeService: EmployeeService, private dialog: MatDialog, private toastr: ToastrService) { }
 
     ngOnInit() {
         this.getEmployees();
     }
     updateEmployee(employee: Employee) {
 
-        const dialogRef = this.dialog.open(UpdateEmployeeComponent, { data: { employee: employee } });
+        const dialogRef = this.dialog.open(UpdateEmployeeComponent, { data: employee });
 
-        dialogRef.afterClosed().subscribe(result => {
+        dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-
-                this.onUpdateEmloyee(result)
+                this.onUpdateEmloyee(result);
             }
         });
     }
@@ -41,24 +35,24 @@ export class EmployeesComponent implements OnInit {
         this.employeeService.getEmployees().subscribe(
             (response: Employee[]) => {
                 this.employees = response;
-                console.log(this.employees);
             },
             (error: HttpErrorResponse) => {
-                alert(error.message);
+                this.toastr.error(error.message, 'Error');
             }
         );
     }
 
 
 
+
     public onUpdateEmloyee(employee: Employee): void {
         this.employeeService.updateEmployee(employee).subscribe(
             (response: Employee) => {
-                console.log(response);
+                this.toastr.success('Employee updated successfully!', 'Success');
                 this.getEmployees();
             },
             (error: HttpErrorResponse) => {
-                alert(error.message);
+                this.toastr.error(error.message, 'Error');
             }
         );
     }
@@ -66,18 +60,18 @@ export class EmployeesComponent implements OnInit {
     public onDeleteEmloyee(employeeId: number): void {
         this.employeeService.deleteEmployee(employeeId).subscribe(
             (response: void) => {
-                console.log(response);
+                this.toastr.success('Employee deleted successfully!', 'Success');
                 this.getEmployees();
             },
             (error: HttpErrorResponse) => {
-                alert(error.message);
+                this.toastr.error(error.message, 'Error');
             }
         );
     }
 
-    clickMethod(name: string, id: number) {
-        if (confirm("Are you sure to delete " + name)) {
-            this.onDeleteEmloyee(id)
+    deleteEmployee(name: string, id: number) {
+        if (confirm('Are you sure to delete ' + name)) {
+            this.onDeleteEmloyee(id);
         }
     }
 

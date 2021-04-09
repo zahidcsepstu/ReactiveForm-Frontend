@@ -25,12 +25,12 @@ export class UpdateEmployeeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.employee = { ...this.data['employee'] };
+        this.employee = { ...this.data };
         this.controls = {
             name: new FormControl('',
                 [
                     Validators.minLength(3),
-                    Validators.required, //validators.required = static fn
+                    Validators.required, // validators.required = static fn
                 ]
             ),
             jobTitle: new FormControl('',

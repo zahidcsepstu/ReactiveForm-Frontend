@@ -70,10 +70,6 @@ export class AddEmployeeComponent {
         return this.form.get('imageUrl');
     }
 
-    get f() {
-        return this.form;
-    }
-
     validateAllFormFields(formGroup: FormGroup) {
         Object.keys(formGroup.controls).forEach(field => {
             const control = formGroup.get(field);
@@ -84,18 +80,16 @@ export class AddEmployeeComponent {
             }
         });
     }
-    showSuccess() {
-        this.toastr.success('Employee Added', 'Success');
-    }
+
     submit(form: FormGroup) {
         if (this.form.valid) {
             this.employeeService.addEmployee(form.value).subscribe(
                 (response: Employee) => {
-                    this.showSuccess();
+                    this.toastr.success('Employee Added', 'Success');
                     form.reset();
                 },
                 (error: HttpErrorResponse) => {
-                    alert(error.message);
+                    this.toastr.error(error.message, 'Error');
                     form.reset();
                 }
             );
